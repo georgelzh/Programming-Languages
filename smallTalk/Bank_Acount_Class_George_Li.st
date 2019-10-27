@@ -1,1 +1,52 @@
-Object subclass: #BankAcount	instanceVariableNames: 'available_balance'	classVariableNames: ''	poolDictionaries: ''	category: 'Bank_Acount_Class'!!BankAcount methodsFor: 'accessing' stamp: 'onetime 10/27/2019 15:51'!available_balance	^ available_balance! !!BankAcount methodsFor: 'accessing' stamp: 'onetime 10/27/2019 15:51'!available_balance: anObject	available_balance := anObject.! !!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:56'!balance	"returns available balance of current user"	Transcript show:'You have: $', self available_balance;cr.	"eg:	g:= BankAcount new.	g balance."! !!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:56'!credit: amount	"add amount of money to the account."		self available_balance: self available_balance + amount.		"eg:	g:= BankAcount new.	g credit: 2000.	g balance."! !!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:57'!debit: amount	"if user have enough money from the bank, then continue the transaction."	self available_balance > amount		ifTrue:[self available_balance: self available_balance - amount. ]		"otherwise, return Insufficient fund."		ifFalse:[Transcript show: 'Insufficient Fund!!';cr.].			"eg:	g:= BankAcount new.	g debit: 2000.	g balance."! !!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:54'!initialize	"initialize the account"	self available_balance: 0.! !
+Object subclass: #BankAcount
+	instanceVariableNames: 'available_balance'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Bank_Acount_Class'!
+
+!BankAcount methodsFor: 'accessing' stamp: 'onetime 10/27/2019 15:51'!
+available_balance
+
+	^ available_balance! !
+
+!BankAcount methodsFor: 'accessing' stamp: 'onetime 10/27/2019 15:51'!
+available_balance: anObject
+
+	available_balance := anObject.! !
+
+
+!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:56'!
+balance
+	"returns available balance of current user"
+	Transcript show:'You have: $', self available_balance;cr.
+	"eg:
+	g:= BankAcount new.
+	g balance."! !
+
+!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:56'!
+credit: amount
+	"add amount of money to the account."
+		self available_balance: self available_balance + amount.
+	
+	"eg:
+	g:= BankAcount new.
+	g credit: 2000.
+	g balance."! !
+
+!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:57'!
+debit: amount
+	"if user have enough money from the bank, then continue the transaction."
+	self available_balance > amount
+		ifTrue:[self available_balance: self available_balance - amount. ]
+		"otherwise, return Insufficient fund."
+		ifFalse:[Transcript show: 'Insufficient Fund!!';cr.].
+		
+	"eg:
+	g:= BankAcount new.
+	g debit: 2000.
+	g balance."! !
+
+!BankAcount methodsFor: 'as yet unclassified' stamp: 'onetime 10/27/2019 15:54'!
+initialize
+	"initialize the account"
+	self available_balance: 0.! !
