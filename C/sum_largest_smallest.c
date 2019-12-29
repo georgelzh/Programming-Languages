@@ -23,6 +23,7 @@ int main(){
     printf("the smallest number is: %i\n", smallest);
 }
 
+
 int find_largest_number(int a,int b,int c){
     int largest;
     if(a >= b){
